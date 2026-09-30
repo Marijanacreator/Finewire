@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fine Wire — Uskoro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap">
+<style>
+  html,body{margin:0;height:100%;background:#0B0D10;font-family:'General Sans',sans-serif;}
+  .wrap{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#F4F4F2;padding:24px;}
+  .logo{font-size:clamp(40px,8vw,88px);font-weight:500;letter-spacing:-0.02em;margin:0;}
+  .tag{margin-top:18px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#8A9BC7;}
+  svg{margin-top:48px;width:min(70vw,420px);height:60px;}
+  path{filter:drop-shadow(0 0 6px rgba(33,69,245,0.6));}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="logo">Fine Wire</h1>
+  <div class="tag">Under Construction</div>
+  <svg viewBox="0 0 400 60"><path id="wire" d="M0,30 C100,0 150,60 220,28 C280,4 320,50 400,20" fill="none" stroke="#2145F5" stroke-width="2"/><circle id="dot" r="5" fill="#2145F5"/></svg>
+<script>
+const path=document.getElementById('wire'),dot=document.getElementById('dot'),len=path.getTotalLength();
+let t=0;
+function tick(){
+  t=(t+0.004)%1;
+  const p=path.getPointAtLength(t*len);
+  dot.setAttribute('cx',p.x); dot.setAttribute('cy',p.y);
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</div>
+</body>
+</html>
